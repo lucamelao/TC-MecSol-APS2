@@ -41,14 +41,33 @@ h = 50
 
 a = k/(d*c)
 
+r = 0.1 
+
+p = 2 * pi * r    
+Atr = pi * r**2 
+
+dx=0.01
+
+nx = int(L/dx)
 #C
 ct = (h*p/k*Atr)*(Text-Tinf)
 
-# O que eh T?
+temperatures = []
 
-# Tb e Tl contorno?
+comp = np.linspace(0,L,100000)
 
-# Qual temp
+time=10000
+
+
+
+matrix = np.zeros(nx)
+matrix[:] = 0
+matrix[0] = Tb
+matrix[-1] = Text
+    
+list_matrix = [matrix]
+
+
 
 # OUTPUTS
 # Gráfico temp x posicao com o resultado numérico
