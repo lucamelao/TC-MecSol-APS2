@@ -49,7 +49,7 @@ Atr = pi * r**2
 
 dx=0.01
 
-nx = int(L/dx)
+nx = int(L/dx)+1
 #C
 ct = (h*p/k*Atr)*(Text-Tinf)
 
@@ -123,6 +123,34 @@ plt.show()
 
 
 
+
+#NUMERICAL
+n=100 #número de passos
+TM = np.zeros((n,nx))
+
+# Condição inicial nos nós internos
+TM[0,1:nx-1] = 0.0
+# Temperatura [C] em x=0
+TM[:,0]=Tb
+# Temperatura [C] em x=L
+TM[:,nx-1]=Text
+
+# dx**2/(a*(h*p*dx**2/k*Atr + 2)) == 0.6719998157674351
+dt=0.5
+for l in range(0,n-1):
+    for i in range(1,nx-1):
+        TM[l+1,i] = a * dt * ((TM[l,i+1]-2*TM[l,i]+TM[l,i-1])/dx**2 - ct) + TM[l,i]
+
+
+# Posições dos nós
+x = np.linspace(0.0,L,nx)
+# Temperatura em todos pontos no instante considerado
+T = np.array(TM[n-1,:])
+# Plot
+plt.plot(x,T)
+plt.ylabel('Temperatura [C]')
+plt.xlabel('Posicao [cm]')
+plt.show()
 # OUTPUTS
 # Gráfico temp x posicao com o resultado numérico
 # Gráfico temp x posicao com o resultado analítico
