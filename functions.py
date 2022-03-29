@@ -36,3 +36,11 @@ def efficiency(qa,h,As,theta):
 
 def temperature(tamb, text, temp_distrib):
     return temp_distrib*(text - tamb) + tamb
+
+def teste(Tl,Tb,m,x,L):
+
+    num=(Tl/Tb)*sinh(m*x)+sinh(m)*(L-x)
+
+    den=sinh(m*L)
+
+    return (num/den)
