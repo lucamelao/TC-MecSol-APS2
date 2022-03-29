@@ -39,7 +39,7 @@ def temperature(tamb, text, temp_distrib):
 
 def teste(Tl,Tb,m,x,L):
 
-    num=(Tl/Tb)*sinh(m*x)+sinh(m)*(L-x)
+    num=(Tl/Tb)*sinh(m*x)+sinh(m*(L-x))
 
     den=sinh(m*L)
 
